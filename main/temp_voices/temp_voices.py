@@ -301,6 +301,6 @@ async def temp(ctx: commands.Context):
         description=f"Это приватные комнаты, которые создаются при входе в триггерный канал и удаляются, если в них нет участников.\n\n<#{cfg['voices']['create-voice']}>\nИзменяйте конфигурацию вашей комнаты благодаря кнопкам ниже. Изменяйте лимит - {limit}, Закрывайте/Открывайте канал кнопками - {unlock} и многое другое. Подробнее по кнопке {filter}",
         color=Colour.from_rgb(235, 192, 52))
     em_temp.set_author(name="Приватные комнаты", icon_url=f"{clock}")
-    em_temp.set_image(url="https://cdn.discordapp.com/attachments/1129601347352809532/1150299828098707487/yacherumade.png")
+    em_temp.set_image(url="https://cdn.discordapp.com/attachments/1129601347352809532/1166231336885948457/yacherumade1.png")
     em_temp.set_footer(text="Присоединитесь к голосовому каналу для взаимодействия с кнопками")
     await ctx.send(embeds= [em_temp_img, em_temp], view=Temp())

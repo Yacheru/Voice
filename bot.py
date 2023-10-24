@@ -12,17 +12,21 @@ class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.all()
 
-        super().__init__(command_prefix=commands.when_mentioned_or(f"{cfg['BOT']['prefix']}"), intents=intents, help_command=None)
+        super().__init__(
+            command_prefix=commands.when_mentioned_or(f"{cfg['BOT']['prefix']}"),
+            intents=intents, 
+            help_command=None)
 
     async def setup_hook(self) -> None:
         from main.voice_activity.voice_activity import reset_d7, reset_h24
-        bot.loop.create_task(reset_h24())
-        bot.loop.create_task(reset_d7())
-        # bot.loop.create_task(send_top_users())
-        # bot.loop.create_task(remove_role_after_1_days())
+        self.loop.create_task(reset_h24())
+        self.loop.create_task(reset_d7())
+        # self.loop.create_task(send_top_users())
+        # self.loop.create_task(remove_role_after_1_days())
 
         from main.temp_voices.temp_voices import Temp
         self.add_view(Temp())
+        
 
     async def update_status(self):
         cursor.execute("SELECT COUNT(channel_id) FROM temp_channels")
