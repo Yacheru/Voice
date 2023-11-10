@@ -8,6 +8,7 @@ from data.postgresql import cursor
 with open("config.json", "r", encoding="utf-8") as f:
     cfg = json.load(f)
 
+
 @bot.tree.command(name="voice", description="Проверить голосовую активность")
 @app_commands.guild_only()
 async def voice(inter: discord.Interaction):
@@ -25,7 +26,8 @@ async def voice(inter: discord.Interaction):
         day_hours = int(result[0] // 3600)
         day_minutes = int(result[0] % 3600) // 60
 
-        em_voice = Embed(title="", description=f"### Пользователь – {inter.user.mention}", color=discord.Colour.dark_theme(), timestamp=datetime.datetime.now())
+        em_voice = Embed(title="", description=f"### Пользователь – {inter.user.mention}",
+                         color=discord.Colour.dark_theme(), timestamp=datetime.datetime.now())
         em_voice.add_field(name="> За всё время:", value=f"```{all_hours} ч. {all_minutes} мин.```", inline=True)
         em_voice.add_field(name="> За 7 Дней:", value=f"```{seven_hours} ч. {seven_minutes} мин.```", inline=True)
         em_voice.add_field(name="> За 24 часа:", value=f"```{day_hours} ч. {day_minutes} мин.```", inline=True)

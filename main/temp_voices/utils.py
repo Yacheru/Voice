@@ -3,7 +3,7 @@ import json
 with open('main/temp_voices/icons.json', 'r', encoding='utf-8') as f:
     icons = json.load(f)
 
-color = 'orange-yellow' # пока доступно только orange-yellow
+color = 'orange-yellow'  # пока доступно только orange-yellow
 
 arrowup = icons[color][0]
 arrowdown = icons[color][1]
