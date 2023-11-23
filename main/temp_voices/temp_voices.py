@@ -5,7 +5,7 @@ from discord.ui import Button
 from .modals import NewNameChannel, NewLimitChannel
 from .selectmenu import *
 from .buttons import Patterns, DeletePattern
-from .func import checkChannels, not_owner, not_in_voice, proverkaCheck, adminSessions, teammate_search
+from .func import not_owner, not_in_voice, teammate_search, adminsessions, checkchannels, proverkacheck
 from .utils import *
 
 with open('main/temp_voices/icons.json', 'r', encoding='utf-8') as fa:
@@ -18,9 +18,9 @@ with open('config.json', 'r', encoding='utf-8') as f:
 @bot.event
 async def on_voice_state_update(member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
     # await mostActiveVoice(member=member)
-    await adminSessions(member=member, after=after, before=before)
-    await checkChannels(member, before.channel, after.channel)
-    await proverkaCheck(member=member, after=after)
+    await adminsessions(member=member, after=after, before=before)
+    await checkchannels(member, before.channel, after.channel)
+    await proverkacheck(member=member, after=after)
     await teammate_search(member=member, after=after)
 
 
